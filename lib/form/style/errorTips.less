@@ -1,0 +1,74 @@
+
+@form-prefix-cls: ~'@{ant-prefix}-form';
+@tooltip-prefix-cls: ~'@{ant-prefix}-tooltip';
+@tooltip-color: rgb(229, 51, 77);
+@IconError-color: #f00;
+@IconError-hover-color: #fff;
+@IconError-hover-bgColor: rgb(229, 51, 77);
+
+.@{form-prefix-cls}-errorTooltip {
+
+  .@{tooltip-prefix-cls}-inner {
+    background-color: @tooltip-color;
+  }
+  .@{tooltip-prefix-cls}-arrow {
+    border-top-color: @tooltip-color;
+    &:before {
+      background-color: @tooltip-color;
+    }
+  }
+
+  .@{form-prefix-cls}-explain {
+    color: #fff;
+  }
+
+}
+
+.@{form-prefix-cls}-errorIcon {
+  -webkit-animation-name: errorTooltip-moveIt, errorTooltip-gif;
+  -webkit-animation-duration: 0.3s, 3.4s;
+  -webkit-animation-timing-function: linear, linear;
+  -webkit-animation-iteration-count: 1, infinite;
+
+  animation-name: errorTooltip-moveIt, errorTooltip-gif;
+  animation-duration: 0.3s, 3.4s;
+  animation-timing-function: linear, linear;
+  animation-iteration-count: 1, infinite;
+
+  position: relative;
+  vertical-align: top;
+  color: @IconError-color;
+  font-weight: bold;
+  border-radius: 50px;
+  font-size: 16px;
+  margin-right:2px;
+  transition: all 0.5s;
+
+  &:hover {
+    background-color: @IconError-hover-bgColor;
+    color: @IconError-hover-color;
+    animation: errorTooltip-moveIt 0s;
+  }
+}
+
+@keyframes errorTooltip-moveIt {
+  from {
+    top: 20px;
+  }
+  to {
+    top: 0;
+  }
+}
+
+@keyframes errorTooltip-gif {
+  0% {
+    box-shadow: inset 0 0 9px 0 #333;
+  }
+  50% {
+    box-shadow: inset 20px 20px 2px 2px #555;
+  }
+  100% {
+    box-shadow: inset 0 0 9px 0 #333;
+  }
+}
+
